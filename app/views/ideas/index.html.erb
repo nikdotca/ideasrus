@@ -1,0 +1,25 @@
+<% if @ideas.any? %>
+	<%= "<h1>#{params[:user]}</h1>" if params[:user]%>
+	<%= render :collection => @ideas, :partial => 'idea'%>
+<% else %>
+	<h1><%= params['user'] %> has no ideas =(</h1>
+	<p>tell him to get some</p>
+<% end %>
+
+<script type='text/javascript'>
+//<![CDATA[
+alert('b');
+function voteUp( event )
+{
+	Event.stop( event );
+	var outerDiv = Event.findElement( event, "div.idea");
+	alert( outerDiv.id );
+	alert( parseInt( outerDiv.id ));
+	var ideaID = parseInt( outerDiv.id );
+	new Ajax.Request( "/ideas/" + ideaID + "/votes", {method: 'post'});
+	window.location.reload();
+}
+$$("a.vote_up").each( function(link)
+	{	Event.observe( link, 'click', voteUp );	});
+//]]>
+</script>

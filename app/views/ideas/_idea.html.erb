@@ -1,0 +1,9 @@
+<div class='idea' id='idea_<%= idea.id -%>'>
+	<div style='float:left;'>
+		<%= idea.votes %> Votes<br />
+		<a href='/idea/<%= idea.id -%>/votes' class='vote_up'>Vote Up!</a>
+	</div>
+	<p><%= idea.text -%></p>
+	<br/>
+	<p><%= idea.poster -%></p>
+</div>
